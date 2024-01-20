@@ -48,7 +48,7 @@ Route.post('/participant', async ({request}) => {
 
 
 Route.get('participant/:id', async ({ params }) => {
-  const participant = await Participant.find(params.id)
+  const participant = await Participant.query().where('id', params.id).preload('santa').firstOrFail()
   return participant
 }
 )
