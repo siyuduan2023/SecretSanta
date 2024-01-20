@@ -38,6 +38,8 @@ Route.post('/participant', async ({request}) => {
     dislike2: schema.string.nullableAndOptional(),
     dislike3: schema.string.nullableAndOptional(),
     bio: schema.string()
+  
+
   })
 
   await request.validate({schema: newPostSchema})
