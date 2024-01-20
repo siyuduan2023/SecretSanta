@@ -1,5 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, hasOne, column } from '@ioc:Adonis/Lucid/Orm'
+import Santa from './Santa'
+
 
 export default class Participant extends BaseModel {
   @column({ isPrimary: true })
@@ -38,4 +40,13 @@ export default class Participant extends BaseModel {
 
   @column()
   public bio: string
+
+  @column()
+  public santaId: number
+
+  @hasOne(() => Santa, {
+    localKey: 'santaId',
+    foreignKey: 'id'
+  })
+  public santa: hasOne<typeof Santa>
 }
